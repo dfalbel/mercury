@@ -13,11 +13,16 @@ mercury_key <- function() {
 }
 
 get_mercury <- function(url){
-  httr::GET(
+  req <- httr::GET(
     "https://mercury.postlight.com/parser",
     query = list(url = url),
     httr::add_headers("x-api-key" = mercury_key())
   )
+  # error msg
+  if(req$status_code != 200){
+    stop(httr::http_status(req$status_code)$message)
+  }
+  req
 }
 
 #' @importFrom magrittr %>%
