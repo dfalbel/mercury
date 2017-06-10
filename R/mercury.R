@@ -6,7 +6,7 @@
 mercury_key <- function() {
   key <- Sys.getenv('MERCURY_KEY')
   if (identical(key, "")) {
-    stop("Please set env var MERCURY_KEY to your Mercury personal access token",
+    stop("Please set env var MERCURY_KEY to your Mercury personal access token. Go to https://mercury.postlight.com/web-parser/ and get yours.",
          call. = FALSE)
   }
   key
